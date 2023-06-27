@@ -7,11 +7,13 @@ const addbutt = document.getElementById("add")
 const subbutt = document.getElementById("sub")
 const divbutt = document.getElementById("divide")
 const multbutt = document.getElementById("multiply")
+const equalbutt = document.getElementById("equals")
 addbutt.addEventListener('click', operator)
 subbutt.addEventListener('click', operator)
 divbutt.addEventListener('click', operator)
 multbutt.addEventListener('click', operator)
 deletebutt.addEventListener('click', deleteNum)
+equalbutt.addEventListener('click', equals)
 newNum.forEach(number =>
     {
         number.addEventListener('click', setNum)
@@ -58,9 +60,41 @@ function deleteNum(){
 function operator(e)
 {
     op = this.id;
-    console.log(op)
+    console.log(op);
 }
 
-function Add(){
-    console.log(parseInt(num1)+parseInt(num2))
+function add(num1,num2){
+    return(parseInt(num1)+parseInt(num2));
+}
+
+function sub(num1,num2){
+    return(parseInt(num1)-parseInt(num2));
+}
+
+function div(num1,num2){
+    return(parseInt(num1)/parseInt(num2));
+}
+
+function mult(num1,num2){
+    return(parseInt(num1)*parseInt(num2));
+}
+
+function equals(){
+    if (op === 'add')
+    {
+        console.log(add(num1,num2))
+    }
+    else if (op === 'sub')
+    {
+        console.log(sub(num1,num2))
+    }
+    else if (op === 'multiply')
+    {
+        console.log(mult(num1,num2))
+    }
+    else if (op === 'divide')
+    {
+        console.log(div(num1,num2))
+    }
+    else{console.log('need more')}
 }

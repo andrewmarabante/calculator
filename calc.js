@@ -104,8 +104,14 @@ function sub(num1,num2){
 }
 
 function div(num1,num2){
+    if (parseInt(num2) === 0)
+    {
+        showanswer.textContent = 'Cant Divide Apples by Bananas!'
+    }
+    else{
     answer = parseInt(num1)/parseInt(num2);
     showanswer.textContent = parseInt(num1)/parseInt(num2);
+    }
 }
 
 function mult(num1,num2){

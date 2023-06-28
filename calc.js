@@ -2,6 +2,7 @@ let num1 = null;
 let num2 = null;
 let op =  null;
 let answer=0;
+const currentop = document.getElementById("currentop")
 const newNum = document.querySelectorAll(".number");
 const deletebutt = document.getElementById("delete")
 const addbutt = document.getElementById("add")
@@ -30,6 +31,7 @@ function setNum(e){
         shownum1.textContent = num1;
         shownum2.textContent = '0';
         showanswer.textContent = '0';
+        currentop.textContent = null;
         answer = 0;
     }
     else if (num1 !=  null && op === null)
@@ -61,6 +63,7 @@ function deleteNum(){
     else if (op != null)
     {
         op = null;
+        currentop.textContent = op;
     }
     else if (num1 != null)
     {
@@ -71,6 +74,7 @@ function deleteNum(){
         shownum1.textContent = '0'
         shownum2.textContent = '0'
         showanswer.textContent = '0'
+        currentop.textContent = null;
         }
 }
 function operator(e)
@@ -82,6 +86,7 @@ function operator(e)
         shownum1.textContent = num1;
         shownum2.textContent = '0'
         op = this.id;
+        changeop();
     }
     if (answer != 0 && num1 === null)
     {
@@ -89,8 +94,10 @@ function operator(e)
         shownum1.textContent = num1;
         shownum2.textContent = '0'
         op = this.id;
+        changeop();
     }
     op = this.id;
+    changeop();
 }
 
 function add(num1,num2){
@@ -106,11 +113,12 @@ function sub(num1,num2){
 function div(num1,num2){
     if (parseInt(num2) === 0)
     {
-        showanswer.textContent = 'Cant Divide Apples by Bananas!'
+        showanswer.textContent = 'Error!'
     }
     else{
-    answer = parseInt(num1)/parseInt(num2);
-    showanswer.textContent = parseInt(num1)/parseInt(num2);
+    dec = parseInt(num1)/parseInt(num2);
+    answer = dec.toFixed(2)
+    showanswer.textContent = answer;
     }
 }
 
@@ -149,4 +157,19 @@ function equals(){
         op = null;
     }
     else{showanswer.textContent = 'Error!'}
+}
+function changeop(){
+    if (op === 'multiply') 
+    {
+    currentop.textContent =  'x'}
+    if (op === 'divide') 
+    {
+    currentop.textContent = '/'}
+    if (op === 'add') 
+    {
+    currentop.textContent =  '+'}
+    if (op === 'sub') 
+    {
+    currentop.textContent =  '-'}
+    else{return}
 }

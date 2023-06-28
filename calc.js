@@ -1,6 +1,7 @@
 let num1 = null;
 let num2 = null;
 let op =  null;
+let answer=0;
 const newNum = document.querySelectorAll(".number");
 const deletebutt = document.getElementById("delete")
 const addbutt = document.getElementById("add")
@@ -29,6 +30,7 @@ function setNum(e){
         shownum1.textContent = num1;
         shownum2.textContent = '0';
         showanswer.textContent = '0';
+        answer = 0;
     }
     else if (num1 !=  null && op === null)
     {
@@ -73,23 +75,41 @@ function deleteNum(){
 }
 function operator(e)
 {
+    if (num1  != null && num2 != null)
+    {
+        equals();
+        num1 = answer;
+        shownum1.textContent = num1;
+        shownum2.textContent = '0'
+        op = this.id;
+    }
+    if (answer != 0 && num1 === null)
+    {
+        num1 = answer;
+        shownum1.textContent = num1;
+        shownum2.textContent = '0'
+        op = this.id;
+    }
     op = this.id;
-    console.log(op);
 }
 
 function add(num1,num2){
+    answer  = parseInt(num1)+parseInt(num2)
     showanswer.textContent = parseInt(num1)+parseInt(num2);
 }
 
 function sub(num1,num2){
+    answer = parseInt(num1)-parseInt(num2);
     showanswer.textContent = parseInt(num1)-parseInt(num2);
 }
 
 function div(num1,num2){
+    answer = parseInt(num1)/parseInt(num2);
     showanswer.textContent = parseInt(num1)/parseInt(num2);
 }
 
 function mult(num1,num2){
+    answer = parseInt(num1)*parseInt(num2);
     showanswer.textContent = parseInt(num1)*parseInt(num2);
 }
 
